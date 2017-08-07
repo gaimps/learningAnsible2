@@ -1,0 +1,14 @@
+---
+- hosts: all
+  tasks:
+  - name: Ensure the HTTPS is installed
+    yum:
+      name: httpd
+      state: present
+    become: true
+  - name: Enabled and Running
+    service:
+      name: httpd
+      state: started
+      enabled: True
+    become: true
