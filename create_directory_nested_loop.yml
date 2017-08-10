@@ -1,0 +1,25 @@
+---
+ - hosts: all
+   remote_user: AdminSYS
+   vars:
+     users:
+       - Alice
+       - Bob
+     folders:
+       - mail
+       - public_html
+     tasks:
+       - name: Ensure users exist
+         users:
+           name: '{{ items }}'
+         become: True
+         with_items:
+           - '{{ users }}'
+       - name: Ensure folder exist
+         file:
+           path: '/home/{{ item.0 }}/{{ item.1 }}'
+           state: directory
+         become: True
+         with_nested:
+           - '{{ users }}'
+           - '{{ folders }}'
