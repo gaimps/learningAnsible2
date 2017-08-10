@@ -1,6 +1,6 @@
 ---
 - hosts: all
-  remote_user: ansible
+  remote_user: AdminSYS
   vars:
     users:
     - alice
@@ -15,7 +15,7 @@
     become: True
     with_items:
     - '{{ users }}'
-  - name: Ensure the folders exist 
+  - name: Ensure the folders exist
     file:
       path: '/home/{{ item.0 }}/{{ item.1 }}'
       state: directory
