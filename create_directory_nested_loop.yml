@@ -8,7 +8,7 @@
      folders:
        - mail
        - public_html
-     tasks:
+   tasks:
        - name: Ensure users exist
          users:
            name: '{{ items }}'
