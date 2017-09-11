@@ -4,7 +4,7 @@
   vars:
     backup: True
   tasks:
-  -name: check if backup folder is set
+  - name: check if backup folder is set
   fail:
     msg: 'set teh backup folder'
   when: backup_folder is not defined
