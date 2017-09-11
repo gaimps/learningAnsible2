@@ -5,13 +5,13 @@
     backup: True
   tasks:
   -name: check if backup folder is set
-   fail:
-     msg: 'set teh backup folder'
-   when: backup_folder is not defined
+  fail:
+    msg: 'set teh backup folder'
+  when: backup_folder is not defined
   tasks:
   - name: Copy the crontab in tmp if the backup variable is true
-    copy:
-      src: /etc/crontab
-      dest: '{{ backup_folder }}/crontab'
-      remote_src: True
-    when: backup
+  copy:
+    src: /etc/crontab
+    dest: '{{ backup_folder }}/crontab'
+    remote_src: True
+  when: backup
