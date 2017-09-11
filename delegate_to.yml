@@ -1,0 +1,17 @@
+---
+- hosts: all
+  remote_user: AdminSYS
+  tasks:
+  - name: Count processes runnign on the remote systems
+    shell: ps | wc -l
+    register: remote_process_number
+  - name: Print remote running
+    debug:
+      msg: '{{ remote_process_number.stdout }}'
+  - name: Count processes runnign on the local systems
+    shell: ps | wc -l
+    delegate_to: localhost
+    register: local_process_number
+  - name: print local processes
+    debug:
+      msg: '{{ local_process_number.stdout }}'
