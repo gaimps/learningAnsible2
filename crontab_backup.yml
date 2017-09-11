@@ -4,9 +4,9 @@
   vars:
     backup: True
   tasks:
-- name: Copy the crontab in tmp if the backup variable is true
-  copy:
-    src: /etc/crontab
-    dest: /tmp/crontab
-    remote_src: True
-  when: backup 
+  - name: Copy the crontab in tmp if the backup variable is true
+    copy:
+      src: /etc/crontab
+      dest: /tmp/crontab
+      remote_src: True
+    when: backup 
